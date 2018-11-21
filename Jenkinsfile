@@ -13,15 +13,11 @@ node('master'){
 	}
 	
     stage('Dockerfile build') {
-		sh "docker build -t spring-boot-jenkins-test:${env.BUILD_ID} ."
+		sh "docker build -t rahul619302/first-docker-project:${env.BUILD_ID} ."
 	}
 	
 	stage('run image') {
-		sh "docker run -dp 9067:9067 spring-boot-jenkins-test:${env.BUILD_ID}"
-	}
-
-	stage('tag image') {
-		sh "docker tag spring-boot-jenkins-test:${env.BUILD_ID} rahul619302/first-docker-project:${env.BUILD_ID}"
+		sh "docker run -dp 9067:9067 rahul619302/first-docker-project:${env.BUILD_ID}"
 	}
 	
 	stage('login') {
